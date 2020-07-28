@@ -43,4 +43,8 @@
         history.go(-1);
     })
 
+    $(".button__view").on("click",function(){
+        $(this).toggleClass('active').next().toggleClass('box__content--active');
+    })
+
 });

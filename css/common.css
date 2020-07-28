@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* Reset */
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select,pre,xmp{margin:0;padding:0}
+button{background:transparent;border:0 none}
 html,body{width:100%;height:100%}
 body,textarea{font-family:'Noto Sans KR','Apple SD Gothic Neo','나눔고딕',NanumGothic,ng,'돋움',dotum,sans-serif;font-size:12px;color:#000}
 img,fieldset{border:0;vertical-align:top}
@@ -35,7 +36,7 @@ xmp{line-height:0}
 		url(../fonts/NotoSansKR-Bold-Hestia.otf) format('opentype'); 
 } 
 .blind{overflow:hidden;position:absolute;top:-999px;left:-999px;width:0;height:0;font-size:0;line-height:999px;white-space:nowrap}
-.wrap{font-family:'Noto Sans Korean',Dotum,"돋움", Tahoma, sans-serif;font-weight:400}
+.wrap{padding-bottom:100px;font-family:'Noto Sans Korean',Dotum,"돋움", Tahoma, sans-serif;font-weight:400}
 /*header*/
 .header{position:relative;padding:0 20px;max-width:980px;margin:0 auto;text-align:center}
 .header .tit{padding:25px 0;font-size:32px;font-weight:800;color:#484848}
@@ -49,8 +50,7 @@ xmp{line-height:0}
 .tab_lst a{display:block;padding:10px;margin-left:-1px;font-size:18px;color:#727272;border:1px solid #e0e0e0;box-sizing:border-box}
 .tab_lst .active{position:relative;z-index:10;background:#f8f8f8;border-color:#5285c4}
 
-.cont_lst a{display:block;padding:10px;border-bottom:1px solid #f0f0f0;font-size:16px;color:#727272}
-.cont_lst a:hover{background:#fcfcfc;color:#484848}
+
 
 .cont_bx{display:none}
 .cont_bx.active{display:block}
@@ -87,6 +87,21 @@ xmp{line-height:0}
 
 .adress_bx{background:#fdffe6;padding:10px;margin-top:10px;border-top:1px solid #727272;}
 .adress_bx .url{display:block;font-size:14px}
+.cont_lst .list-item:first-child{border-top:0 none}
+.cont_lst .list-item{border-top:1px solid #ccc}
+.box__content{display:none}
+.box__content.box__content--active{display:block}
+.box__content .text__inforamtion{font-size:14px;color:#333}
+.box__content .text__inforamtion+.text__inforamtion{margin-top:5px;}
+.box__content .link__view{display:block;margin-top:10px}
+
+.cont_bx .button__view{display:block;width:100%;padding:10px;font-size:16px;color:#727272;text-align:left;cursor:pointer}
+.cont_bx .button__view.active,
+.cont_bx .button__view:hover{font-weight:bold;background:#fcfcfc;color:#484848}
+.box__content{margin-top:-1px;z-index:10;padding:20px;}
+
 /*footer*/
 .footer{position:fixed;bottom:0;left:0;width:100%;background:#f8f8f8;text-align:center}
 .footer p{padding:20px 0;box-sizing:border-box}
+
+

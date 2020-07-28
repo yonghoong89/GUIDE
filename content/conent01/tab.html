@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+<title>ISSUE INDEX</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.wrap{padding:20px}
+.box__navigation{position:relative;overflow-y:hidden;overflow-x:auto;height:48px;padding:0 16px 0;white-space:nowrap}
+.box__navigation::-webkit-scrollbar{display:none}
+.box__navigation--fixed{position:fixed;top:0;left:0;z-index:100;width:100%;margin:0;background-color:#fff}
+.box__navigation .list__navigation{display:table-row}
+.box__navigation .list__navigation:after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background-color:#eee}
+.box__navigation .list__navigation .list-item{display:table-cell;padding-right:16px;color:#717171;font-size: 16px;}
+.box__navigation .list__navigation .link__item{display:block;height:48px;color:#757575;line-height:48px}
+.box__navigation .list__navigation .list-item--active .link__item{position:relative;color:#00c400;font-weight:bold}
+.box__navigation .list__navigation .list-item--active .link__item:after{position:absolute;bottom:0;left:0;z-index:10;width:100%;height:2px;background-color:#00c400;content:''}
+.box__contents{display: none;}
+.box__contents.box__contents--active{display:block}
+</style>
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <div class="box__control">
+        앵커 형식
+        <div class="box__navigation">
+            <div class="list__navigation" role="tablist">
+                <div class="list-item">
+                    <a href="#content1" class="link__item" id="anchor1" role="tab" aria-selected="true">주문내역</a>
+                </div>
+                <div class="list-item">
+                    <a href="#content2" class="link__item" id="anchor2" role="tab" aria-selected="false">여행숙박</a>
+                </div>
+                <div class="list-item">
+                    <a href="#content3" class="link__item" id="anchor3" role="tab" aria-selected="false">항공권</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="box__contents box__contents--active" id="content1" tabindex="0" aria-labelledby="anchor1" role="tabpanel">
+            상품리스트1
+        </div>
+        <div class="box__contents" id="content2" tabindex="0" aria-labelledby="anchor2" role="tabpanel">
+            상품리스트2
+        </div>
+        <div class="box__contents" id="content3" tabindex="0" aria-labelledby="anchor3" role="tabpanel">
+            상품리스트3
+        </div>
+    </div>
+
+    버튼형식
+    <div class="box__control2">
+        <div class="box__navigation">
+            <div class="list__navigation" role="tablist">
+                <div class="list-item">
+                    <button type="button" class="link__item" id="anchor2_1" aria-controls="content2_1" role="tab" aria-selected="true">주문내역</button>
+                </div>
+                <div class="list-item">
+                    <button type="button" class="link__item" id="anchor2_2" aria-controls="content2_2" role="tab" aria-selected="false">여행숙박</button>
+                </div>
+                <div class="list-item">
+                    <button type="button" class="link__item" id="anchor2_3" aria-controls="content2_3" role="tab" aria-selected="false">항공권</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="box__contents box__contents--active" id="content2_1" tabindex="0" aria-labelledby="anchor2_1" role="tabpanel">
+            상품리스트1
+        </div>
+        <div class="box__contents" id="content2_2" tabindex="0" aria-labelledby="anchor2_2" role="tabpanel">
+            상품리스트2
+        </div>
+        <div class="box__contents" id="content2_3" tabindex="0" aria-labelledby="anchor2_3" role="tabpanel">
+            상품리스트3
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script>
+    var tabui1 = (function(){
+        var box = $('.box__control')
+        $(box.find('.list__navigation .link__item')).on('click', function(){
+            var hrefCheck = $(this).attr("href");
+            console.log(hrefCheck)
+            $(hrefCheck).addClass('box__contents--active').siblings('.box__contents').removeClass('box__contents--active')
+        });
+
+    })();
+
+    var tabui2 = (function(){
+        var box = $('.box__control2')
+        $(box.find('.list__navigation .link__item')).on('click', function(){
+            var hrefCheck = $(this).attr("aria-controls");
+            var content = "#" + hrefCheck
+            console.log(content)
+            $(content).addClass('box__contents--active').siblings('.box__contents').removeClass('box__contents--active')
+        });
+
+    })();
+</script>
+</body>
+</html>

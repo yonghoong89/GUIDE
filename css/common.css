@@ -93,9 +93,9 @@ xmp{line-height:0}
 .box__content.box__content--active{display:block}
 .box__content .text__inforamtion{font-size:14px;color:#333}
 .box__content .text__inforamtion+.text__inforamtion{margin-top:5px;}
-.box__content .link__view{display:block;margin-top:10px}
+.box__content .link__view{display:block;margin-top:10px;font-size:13px;color:#5285c4}
 
-.cont_bx .button__view{display:block;width:100%;padding:10px;font-size:16px;color:#727272;text-align:left;cursor:pointer}
+.cont_bx .button__view{display:block;width:100%;padding:12px;font-size:16px;color:#727272;text-align:left;cursor:pointer}
 .cont_bx .button__view.active,
 .cont_bx .button__view:hover{font-weight:bold;background:#fcfcfc;color:#484848}
 .box__content{margin-top:-1px;z-index:10;padding:20px;}

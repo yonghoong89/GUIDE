@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+<title>ISSUE INDEX</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.wrap{padding:20px}
+.box__navigation{position:relative;overflow-y:hidden;overflow-x:auto;height:48px;padding:0 16px 0;white-space:nowrap}
+.box__navigation::-webkit-scrollbar{display:none}
+.box__navigation--fixed{position:fixed;top:0;left:0;z-index:100;width:100%;margin:0;background-color:#fff}
+.box__navigation .list__navigation{display:table-row}
+.box__navigation .list__navigation:after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background-color:#eee}
+.box__navigation .list__navigation .list-item{display:table-cell;padding-right:16px;color:#717171;font-size: 16px;}
+.box__navigation .list__navigation .link__item{display:block;height:48px;color:#757575;line-height:48px}
+.box__navigation .list__navigation .list-item--active .link__item{position:relative;color:#00c400;font-weight:bold}
+.box__navigation .list__navigation .list-item--active .link__item:after{position:absolute;bottom:0;left:0;z-index:10;width:100%;height:2px;background-color:#00c400;content:''}
+.box__contents{display: none;}
+.box__contents.box__contents--active{display:block}
+</style>
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <dt>
+        <button type="button" aria-controls="answer-99" aria-expanded="false">보너스 코인은 언제 소진되나요?</button>
+    </dt>
+    <dd id="answer-99" hidden>
+        <p>만료기한이 짧은 보너스 코인이 일반 코인보다 먼저 소진됩니다.</p>
+    </dd>
+    <dt>
+        <button type="button" aria-controls="answer-11" aria-expanded="true">보너스 코인은 언제 소진되나요?</button>
+    </dt>
+    <dd id="answer-11">
+        <p>만료기한이 짧은 보너스 코인이 일반 코인보다 먼저 소진됩니다.</p>
+    </dd>
+</div>
+
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script>
+    var tabui1 = (function(){
+        var box = $('.box__control')
+        $(box.find('.list__navigation .link__item')).on('click', function(){
+            var hrefCheck = $(this).attr("href");
+            console.log(hrefCheck)
+            $(hrefCheck).addClass('box__contents--active').siblings('.box__contents').removeClass('box__contents--active')
+        });
+
+    })();
+
+    var tabui2 = (function(){
+        var box = $('.box__control2')
+        $(box.find('.list__navigation .link__item')).on('click', function(){
+            var hrefCheck = $(this).attr("aria-controls");
+            var content = "#" + hrefCheck
+            console.log(content)
+            $(content).addClass('box__contents--active').siblings('.box__contents').removeClass('box__contents--active')
+        });
+
+    })();
+</script>
+</body>
+</html>

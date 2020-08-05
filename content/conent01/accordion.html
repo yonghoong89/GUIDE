@@ -6,58 +6,47 @@
 <link rel="stylesheet" href="../../css/common.css">
 <style>
 .wrap{padding:20px}
-.box__navigation{position:relative;overflow-y:hidden;overflow-x:auto;height:48px;padding:0 16px 0;white-space:nowrap}
-.box__navigation::-webkit-scrollbar{display:none}
-.box__navigation--fixed{position:fixed;top:0;left:0;z-index:100;width:100%;margin:0;background-color:#fff}
-.box__navigation .list__navigation{display:table-row}
-.box__navigation .list__navigation:after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background-color:#eee}
-.box__navigation .list__navigation .list-item{display:table-cell;padding-right:16px;color:#717171;font-size: 16px;}
-.box__navigation .list__navigation .link__item{display:block;height:48px;color:#757575;line-height:48px}
-.box__navigation .list__navigation .list-item--active .link__item{position:relative;color:#00c400;font-weight:bold}
-.box__navigation .list__navigation .list-item--active .link__item:after{position:absolute;bottom:0;left:0;z-index:10;width:100%;height:2px;background-color:#00c400;content:''}
-.box__contents{display: none;}
+.box__component + .box__component{margin-top: 20px;}
+.button__extend{padding:20px 20px;cursor: pointer;font-weight: normal;color: #fff;}
+.button__extend[aria-expanded="true"]{background-color: red;}
+.button__extend[aria-expanded="false"]{background-color: blue;}
+.box__contents{display: none;margin-top: 20px}
 .box__contents.box__contents--active{display:block}
 </style>
-<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="../../js/common.js"></script>
 </head>
 <body>
 <div id="wrap" class="wrap">
-    <dt>
-        <button type="button" aria-controls="answer-99" aria-expanded="false">보너스 코인은 언제 소진되나요?</button>
-    </dt>
-    <dd id="answer-99" hidden>
-        <p>만료기한이 짧은 보너스 코인이 일반 코인보다 먼저 소진됩니다.</p>
-    </dd>
-    <dt>
-        <button type="button" aria-controls="answer-11" aria-expanded="true">보너스 코인은 언제 소진되나요?</button>
-    </dt>
-    <dd id="answer-11">
-        <p>만료기한이 짧은 보너스 코인이 일반 코인보다 먼저 소진됩니다.</p>
-    </dd>
+    <div class="box__component">
+        <button type="button" class="button__extend js-button-accordion" aria-controls="answer1" aria-expanded="false">콘텐츠 자세히보기</button>
+        <div class="box__contents" id="answer1">
+            콘텐츠자세히보기 확장버튼 확장 됨
+        </div>
+    </div>
+
+    <div class="box__component">
+        <button type="button" class="button__extend js-button-accordion" aria-controls="answer2" aria-expanded="false">콘텐츠 자세히보기</button>
+        <div class="box__contents" id="answer2">
+            확장 콘텐츠 설명확장 콘텐츠 설명 확장 콘텐츠 설명 확장 콘텐츠 설명 확장 콘텐츠 설명
+        </div>
+    </div>
+
 </div>
 
+
 <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
 <script>
     var tabui1 = (function(){
-        var box = $('.box__control')
-        $(box.find('.list__navigation .link__item')).on('click', function(){
-            var hrefCheck = $(this).attr("href");
-            console.log(hrefCheck)
-            $(hrefCheck).addClass('box__contents--active').siblings('.box__contents').removeClass('box__contents--active')
+        $('.js-button-accordion').on('click', function(){
+            $(this).next().toggleClass('box__contents--active');
+
+            if($(this).next().hasClass('box__contents--active')){
+                $(this).attr('aria-expanded','true')
+            }else{
+                $(this).attr('aria-expanded','false')
+                
+            }
         });
-
-    })();
-
-    var tabui2 = (function(){
-        var box = $('.box__control2')
-        $(box.find('.list__navigation .link__item')).on('click', function(){
-            var hrefCheck = $(this).attr("aria-controls");
-            var content = "#" + hrefCheck
-            console.log(content)
-            $(content).addClass('box__contents--active').siblings('.box__contents').removeClass('box__contents--active')
-        });
-
     })();
 </script>
 </body>

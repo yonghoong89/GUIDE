@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+<title>ISSUE INDEX</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+
+.box__component + .box__component{margin-top: 20px;}
+.box__component{background-image:-webkit-linear-gradient(to bottom, #bc9a6e 0%, #a1825a 100%);background-image:linear-gradient(to bottom, #bc9a6e 0%, #a1825a 100%)}
+.box__component-smileclub{position:relative;z-index:10;padding:20px 16px;overflow-x:auto;white-space:nowrap}
+.box__component-smileclub .list__cash{display:table-row;}
+.box__component-smileclub .list__cash .list-item{display:table-cell;position:relative;padding-right:8px;}
+.box__component-smileclub .list__cash .list-item:last-child{padding-right:16px}
+.box__component-smileclub .list__cash .link__item{display:block;width:122px;height:78px;padding:8px 12px;border-radius:8px;background:#fff;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08)}
+.box__component-smileclub .list__cash .text__title{display:block;margin-bottom:4px;font-size:12px;font-weight:normal;line-height:16px;color:#424242}
+.box__component-smileclub .list__cash .text__value{display:block;font-size:14px;line-height:20px;color:#067dfd;font-weight:bold}
+.box__component-smileclub .list__cash .list-smilepay .text__value{font-size:12px;line-height:16px;vertical-align:top;color:#616161}
+.box__component-smileclub .list__cash .text__value .text__unit{font-size:11px;line-height:20px;vertical-align:bottom;font-weight:normal}
+.box__component-smileclub .list__cash .text__price{position:relative;display:inline-block;margin-top:1px;font-size:12px;line-height:18px;letter-spacing:-0.5px;color:#757575;vertical-align:top}
+.box__component-smileclub .list__cash .text__price:after{content:'';position:absolute;top:5px;right:-10px;width:8px;height:8px;z-index:10;background-position:-109px 0}
+</style>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <div class="box__component">
+        <div class="box__component-smileclub">
+            <ul class="list__cash">
+                <li class="list-item">
+                    <a href="#" class="link__item">
+                        <span class="text__title">스마일캐시</span><span class="text__value">195,600<span class="text__unit">원</span></span>
+                        <span class="text__price">2,600원 적립예정</span>
+                    </a>
+                </li>
+                <li class="list-item list-smilepay">
+                    <a href="#" class="link__item">
+                        <span class="text__title">스마일페이</span><span class="text__value">**** **** <span class="text__num">3395</span></span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="#" class="link__item">
+                        <span class="text__title">스마일카드</span><span class="text__value">3,650<span class="text__unit">원 적립예정</span></span>
+                        <span class="text__price sprite__mypage--after">카드 이용내역</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="#" class="link__item">
+                        <span class="text__title">스마일스탬프</span><span class="text__value">6<span class="text__unit">장</span></span>
+                        <span class="text__price sprite__mypage--after">스탬프 적립내역</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="#" class="link__item">
+                        <span class="text__title">스마일포인트</span><span class="text__value">3,310<span class="text__unit">P</span></span>
+                        <span class="text__price sprite__mypage--after">포인트 내역</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+</body>
+</html>

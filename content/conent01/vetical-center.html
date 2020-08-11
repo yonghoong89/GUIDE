@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+<title>ISSUE INDEX</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.wrap{padding:20px}
+.text__title{margin-top: 15px;font-size: 16px;color: #333}
+.box__component{margin-top:10px;height:200px;padding:10px;border: 1px solid #ccc;border-radius:5px;}
+.box__component .box__vetical{background-color:#cfcfcf}
+.text__notice{margin-top:15px;font-size: 12px;color: #333}
+
+
+.box__component--align1{display:table;width:100%;table-layout:fixed;}
+.box__component--align1 .box__vetical{height:100px;display:table-cell;vertical-align:middle;}
+.box__component--align1 .text{background-color:#999;}
+
+.box__component--align2{display:flex;flex-direction:column;justify-content: center}
+.box__component--align2 .box__vetical{height:100px}
+.box__component--align2 .text{background-color:#999;}
+
+.box__component--align3{display:-webkit-box;-webkit-box-align:center;}
+.box__component--align3 .box__vetical{height:100px;-webkit-box-flex:1}
+.box__component--align3 .text{background-color:#999;}
+
+</style>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <p class="text__notice">* display : table 활용</p>
+    <div class="box__component box__component--align1">
+        <div class="box__vetical">
+            <p class="text">서비스가 만족스러우셨어요?서비스가 만족스러우셨어요?</p>
+            <p class="text">서비스가 만족스러우셨어요?</p>
+            <p class="text">서비스가 만족스러우셨어요?</p>
+        </div>
+    </div>
+    <p class="text__notice">* display : flex 활용</p>
+    <div class="box__component box__component--align2">
+        <div class="box__vetical">
+            <p class="text">서비스가 만족스러우셨어요?서비스가 만족스러우셨어요?</p>
+            <p class="text">서비스가 만족스러우셨어요?</p>
+            <p class="text">서비스가 만족스러우셨어요?</p>
+        </div>
+    </div>
+
+    <p class="text__notice">* display : -webkit-box 활용</p>
+    <div class="box__component box__component--align3">
+        <div class="box__vetical">
+            <p class="text">서비스가 만족스러우셨어요?서비스가 만족스러우셨어요?</p>
+            <p class="text">서비스가 만족스러우셨어요?</p>
+            <p class="text">서비스가 만족스러우셨어요?</p>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script>
+    var tabui1 = (function(){
+        $('.js-button-accordion').on('click', function(){
+            $(this).next().toggleClass('box__contents--active');
+
+            if($(this).next().hasClass('box__contents--active')){
+                $(this).attr('aria-expanded','true')
+            }else{
+                $(this).attr('aria-expanded','false')
+                
+            }
+        });
+    })();
+</script>
+</body>
+</html>

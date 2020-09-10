@@ -6,19 +6,32 @@
 <link rel="stylesheet" href="../../css/common.css">
 <style>
 .wrap{padding:20px}
+.text__title{font-size:16px;margin-top:10px;}
 .box__name{display:flex;display:-webkit-flex;flex-direction:row;font-size:14px;color:#616161;line-height:24px;white-space:nowrap;}
 .text__name{overflow:hidden;-webkit-box-orient: vertical;-webkit-line-clamp:1;text-overflow:ellipsis}
 .text__add-item{display:inline-block;padding-left:5px;vertical-align:top;white-space:nowrap}
+
+.box__name2{font-size:14px;color:#616161;line-height:24px}
+.text__name2{overflow:hidden;display: -webkit-box;text-overflow:ellipsis;-webkit-line-clamp:3;-webkit-box-orient: vertical;word-wrap:break-word}
 </style>
 <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../../js/common.js"></script>
 </head>
 <body>
 <div id="wrap" class="wrap">
-    타입1.
+    <p class="text__title">
+        타입1. 유동적 오른쪽 크기에 따라 말줄임 영역 변경
+    </p>
     <div class="box__name">
         <span class="text__name">나이키 우먼스 에어맥스 나이키 우먼스 에어맥스 말줄임 말줄임말줄임말줄임</span>
         <span class="text__add-item">외 1건</span>
+    </div>
+
+    <p class="text__title">
+        타입2. 여러줄
+    </p>
+    <div class="box__name2">
+        <span class="text__name2">나이키 우먼스 에어맥스 나이키 우먼스 에어맥스 말줄임 말줄임말줄임말줄임나이키 우먼스 에어맥스 나이키 우먼스 에어맥스 말줄임 말줄임말줄임말줄임나이키 우먼스 에어맥스 나이키 우먼스 에어맥스 말줄임 말줄임말줄임말줄임나이키 우먼스 에어맥스 나이키 우먼스 에어맥스 말줄임 말줄임말줄임말줄임나이키 우먼스 에어맥스 나이키 우먼스 에어맥스 말줄임 말줄임말줄임말줄임나이키 우먼스 에어맥스 나이키 우먼스 에어맥스 말줄임 말줄임말줄임말줄임</span>
     </div>
 </div>
 </body>

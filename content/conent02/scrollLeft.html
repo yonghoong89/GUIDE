@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+<title>ISSUE INDEX</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+    .wrapper{background-color:#727272;}
+    .box__navigation{overflow-x:auto;white-space:nowrap;font-size:0;padding:10px}
+    .box__navigation .button__category{display:inline-block;margin:0 10px;padding:10px;background-color:#222;color:#fff}
+    .box__navigation .button__category.button__category--active{background-color:#0066cc}
+</style>
+</head>
+<body>
+
+<div id="wrapper" class="wrapper">
+	<div class="section__navigation">
+		<div class="box__navigation">
+			<button type="button" class="button__category">네비게이션1</button>
+			<button type="button" class="button__category">네비게이션2</button>
+			<button type="button" class="button__category">네비게이션3</button>
+			<button type="button" class="button__category">네비게이션4</button>
+			<button type="button" class="button__category">네비게이션5</button>
+			<button type="button" class="button__category">네비게이션6</button>
+			<button type="button" class="button__category">네비게이션7</button>
+			<button type="button" class="button__category">네비게이션8</button>
+			<button type="button" class="button__category">네비게이션9</button>
+			<button type="button" class="button__category">네비게이션10</button>
+		</div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script>
+
+$('.section__navigation').each(function () { //section단위로 각각이벤트 발생
+    var naviBoxGroup = $(this);
+
+    var scrollLeftEvent = function scrollLeftEvent(naviBoxGroup) {
+      var naviBox = naviBoxGroup;
+      var naviBoxInner = naviBox.find('.box__navigation'); // oevrflow-x 요소
+      var tabUi = 'button__category' // 버튼요소
+      var tabUiElement = naviBox.find('.' + tabUi);
+      var tabUiWidth = null;
+
+      for (var i = 0; i < tabUiElement.length; i++) {
+        tabUiWidth += tabUiElement.eq(i).outerWidth();
+      }
+
+      tabUiElement.click(function () {
+        $(this).addClass(tabUi+'--active').siblings().removeClass(tabUi+'--active');
+        var scrollValue = naviBoxInner.scrollLeft();
+        var navigationScroll = naviBoxInner.width() < tabUiWidth;
+        var navigationListActive = $(this);
+
+        if (navigationScroll) {
+          activeItemOffset = navigationListActive.offset().left + navigationListActive.width() / 2 - naviBoxInner.width() / 2;
+          naviBoxInner.animate({
+            scrollLeft: activeItemOffset + scrollValue
+          }, 100);
+        }
+      });
+    };
+
+    scrollLeftEvent(naviBoxGroup);
+});
+</script>
+</body>
+</html>

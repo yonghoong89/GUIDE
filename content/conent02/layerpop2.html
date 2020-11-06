@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+<title>ISSUE INDEX</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../css/commonframe.css">
+<style>
+*{margin:0;padding:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+.body__scroll-lock{position:fixed;left:0;right:0}
+.button__support{padding:0 8px;height:28px;margin-left:4px;background-color:#00c400;font-size:11px;line-height:28px;color:#fff;border-radius:8px;border:1px solid #00c400;vertical-align:top}
+.dimmed{background:rgba(0,0,0,0.5);display:block;position:fixed;left:0;top:0;width:100%;height:100%;z-index:1000}
+
+.box__layer-dimmed-simple{display:none;position:fixed;top:50%;left:50%;z-index:1200;background:#fff}
+.box__layer-dimmed-simple--g9-return{width:290px;margin:-257px 0 0 -145px;}
+.box__layer-dimmed-simple .box__content{position:relative;}
+.box__layer-dimmed-simple .text__title-refund{position:relative;padding:35px 30px 18px;line-height:30px;font-size:25px;letter-spacing:-0.5px;color:#222;background:#eef6ff;}
+.box__layer-dimmed-simple--g9-return .text__title-refund{font-size:24px;letter-spacing:-0.5px;background:#edfafe;}
+.box__layer-dimmed-simple .text__title-refund .text__emphasis{font-weight:normal;color:#067dfd}
+.box__layer-dimmed-simple--g9-return .text__title-refund .text__emphasis{color:#00b7ec}
+.box__layer-dimmed-simple .list__refund-info{padding:15px 30px 25px;}
+.box__layer-dimmed-simple--g9-return .list__refund-info{padding-bottom:0}
+.box__layer-dimmed-simple .list__refund-info .list-item{margin-top:10px;line-height:20px;font-size:14px;color:#222;}
+.box__layer-dimmed-simple--g9-return .list__refund-info .list-item .text__emphasis{color:#00b7ec;}
+.box__layer-dimmed-simple--g9-return .list__refund-info-sub{padding:0 30px;}
+.box__layer-dimmed-simple--g9-return .list__refund-info-sub .list-item{margin-top:10px;line-height:17px;font-size:12px;color:#999;}
+.box__layer-dimmed-simple--g9-return .box__bottom-info{margin:30px 30px 29px;font-size:0;}
+.box__layer-dimmed-simple--g9-return .box__bottom-info .text__tel{display:inline-block;text-decoration:underline;font-size:12px;line-height:12px;color:#666;}
+.box__layer-dimmed-simple--g9-return .box__bottom-info .text__tel .text__number,
+.box__layer-dimmed-simple--g9-return .box__bottom-info .text__tel .text__number:link{color:#666;}
+.box__layer-dimmed-simple--g9-return .box__bottom-info .text__refund{margin-top:6px;font-size:12px;line-height:17px;color:#666;}
+.box__layer-dimmed-simple .box__sub-info{padding:0 30px 29px;}
+.box__layer-dimmed-simple .box__sub-info .text__caution{display:block;line-height:17px;font-size:12px;color:#999;}
+.box__layer-dimmed-simple .box__sub-info .text__refund{line-height:17px;font-size:12px;color:#999;}
+.box__layer-dimmed-simple .ly_btn_close{display:inline-block;position:absolute;top:8px;right:8px;width:36px;height:36px;}
+.box__layer-dimmed-simple .ly_btn_close:after{background-position:-145px -198px;width:18px;height:18px;margin:9px;}
+</style>
+</head>
+<body>
+
+<div id="wrapper" class="wrapper">
+	<button class="button__support" onclick="LayerJs.open('#box__layer-g9-return',this)">G9 반품배송비 지원 안내</button>
+
+	<div id="box__layer-g9-return" class="box__layer-dimmed-simple box__layer-dimmed-simple--g9-return">
+		<div class="box__content">
+			<h3 class="text__title-refund">기분 좋은 G9 반품,<br><strong class="text__emphasis">마음이 변해도 괜찮아요!</strong></h3>
+			<ul class="list__refund-info">
+				<li class="list-item">G9에서는 고객님이 결제한 반품배송비를 <span class="text__emphasis">매월 1만원까지 스마일캐시</span>로 돌려드리며, 반품이 완료되면 다음날 스마일캐시를 즉시 지급해드립니다. </li>
+			</ul>
+			<ul class="list__refund-info-sub">
+				<li class="list-item">판매자와 반품시 협의가 필요한 해외직구 상품과 배송상품이 아닌 e쿠폰/여행/항공권 상품 등 일부 상품은 반품 배송비 지원이 어렵습니다.</li>
+				<li class="list-item">스마일캐시는 지급 후 6개월간 사용 가능합니다.</li>
+			</ul>
+		</div>
+		<div class="box__bottom-info">
+			<strong class="text__tel">고객센터 <a href="tel:1644-5702" class="text__number">1644-5702</a></strong>
+			<p class="text__refund">반품배송비 지원 관련 궁금한 점이 있으신가요?<br>고객센터로 문의주시면 친절히 안내해드립니다.</p>
+		</div>
+		<a href="#" class="ly_btn_close sprite__mypage--after" onclick="LayerJs.close('#box__layer-g9-return')"><span class="for-a11y">레이어닫기</span></a>
+	</div>
+</div>
+<script>
+var LayerJs = (function () {
+	var method = {};
+	method.LayerOpen = function (layer, openbutton) {
+		var layerEl = document.querySelector(layer);
+		var content = document.querySelector("#wrapper");
+		this.openbutton = openbutton;
+
+		this.dimmedEl = document.createElement("div");
+
+		this.dimmedEl.classList.add('dimmed')
+		this.dimmedEl.setAttribute('onclick','LayerJs.close(\'' + layer + '\')');
+		content.insertBefore(this.dimmedEl,layerEl)
+		
+		layerEl.style.display = "block";
+		layerEl.setAttribute('tabindex','0')
+		layerEl.focus();
+		method.scrollFixed();
+	};
+
+	method.LayerClose = function (layer) {
+		var layerEl = document.querySelector(layer);
+		this.openbutton.focus();
+		layerEl.style.display = "none";
+		this.dimmedEl.remove();
+		method.scrollFixedCancel()
+	};
+
+	method.scrollFixed = function () {
+		this.scrollValue = window.scrollY || document.documentElement.scrollTop;
+		this.bodyEl = document.querySelector("body");
+		this.bodyEl.classList.add('body__scroll-lock')
+		this.bodyEl.style.top = '-' + this.scrollValue + 'px';
+	};
+
+	method.scrollFixedCancel = function () {
+		this.bodyEl.classList.remove('body__scroll-lock');
+		window.scrollTo(0 , this.scrollValue)
+	};
+	return {
+		open: method.LayerOpen,
+		close: method.LayerClose
+	}
+})();
+</script>
+</body>
+</html>

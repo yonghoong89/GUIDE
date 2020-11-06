@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+<title>ISSUE INDEX</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+*{margin:0;padding:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+.body__scroll-lock{position:fixed;left:0;right:0}
+.button__coupon{padding:0 8px;height:28px;margin-left:4px;background-color:#00c400;font-size:11px;line-height:28px;color:#fff;border-radius:8px;border:1px solid #00c400;vertical-align:top}
+.dimmed{background:rgba(0,0,0,0.5);display:block;position:fixed;left:0;top:0;width:100%;height:100%;z-index:1000}
+
+.box__layer{display:none;position:absolute;z-index:1010;bottom:-100%}
+.box__layer .box__layer-dimmed{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
+.box__layer .box__layer-content{position:relative;border-radius:12px 12px 0 0;background-color:#fff}
+.box__layer .box__layer-body{overflow-y:auto}
+.box__layer .box__layer-header{height:49px;border-bottom:1px solid #f5f5f5;text-align:center }
+.box__layer .box__layer-header .text__header{font-size:18px;line-height:48px}
+.box__layer .button__close{position:absolute;top:0;right:0;width:48px;height:48px}
+.box__layer .button__close:before{display:block;position:absolute;top:50%;left:50%;width:18px;height:18px;margin:-9px 0 0 -9px;background-position:-92px -246px;content:''}
+.box__layer.box__layer--full{position:fixed;left:0;overflow-y:auto;bottom:-100%;width:100%;transition:bottom 0.6s}
+.box__layer .box__layer-iframe{height:100%}
+.box__layer--coupon .box__layer-body{padding-bottom:144px}
+.box__return-coupon .text__coupon-number{height:32px;background-color:#f5f5f5;font-size:12px;color:#757575;line-height:32px;text-align:center}
+.box__return-coupon .text__coupon-number .text__holding-number{color:#000}
+.box__return-coupon .text__coupon-number .text__useing-number{color:#00c400}
+.box__return-coupon .text__coupon-title{padding:14px 16px 0;font-size:14px;color:#616161;line-height:14px}
+.box__return-coupon .list__coupon{padding:17px 16px 17px}
+.box__return-coupon .list__coupon .list-item{position:relative;margin-top:16px}
+.box__return-coupon .list__coupon .list-item:first-child{margin-top:0}
+.box__return-coupon .list__coupon .box__coupon-information{padding-left:28px}
+.box__return-coupon .list__coupon .ds_radio{position:absolute;top:0;left:0;}
+.box__return-coupon .list__coupon .form__label{float:left;font-size:13px;color:#616161}
+.box__return-coupon .list__coupon .box__price{display:table-cell;min-width:88px;vertical-align:middle}
+.box__return-coupon .list__coupon .box__price .text__price{font-size:14px}
+.box__return-coupon .list__coupon .box__price .text__unit{font-size:12px}
+.box__return-coupon .list__coupon .coupon__name{display:block}
+.box__return-coupon .list__coupon .box__information{display:table-cell;font-size:13px;color:#616161;line-height:18px}
+.box__return-coupon .list__coupon .box__information .button__cancel{font-size:12px;color:#000;line-height:18px;text-decoration:underline}
+.box__return-coupon .list__coupon .box__information .text__use{font-size:12px;color:#00c400;line-height:18px}
+.box__return-coupon .box__total-price{position:absolute;bottom:0;left:0;width:100%;height:136px;padding:0 16px;box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.2);-webkit-box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.2);background-color:#fff}
+.box__return-coupon .box__total-price .list__price{display:table;width:100%;height:70px;table-layout:fixed}
+.box__return-coupon .box__total-price .list__price .list-item{display:table-cell;position:relative;text-align:center;vertical-align:middle}
+.box__return-coupon .box__total-price .list__price .text__title{display:block;color:#616161;font-size:13px;line-height:16px}
+.box__return-coupon .box__total-price .list__price .text__number{display:block;margin-top:4px;font-size:15px;font-weight:bold;color:#000;line-height:20px}
+.box__return-coupon .box__total-price .list__price .list-item--discount .text__number{color:#00c400}
+.box__return-coupon .box__total-price .list__price .list-item--discount:before{content:'';position:absolute;top:50%;left:-4px;margin-top:-8px;width:16px;height:16px;background-position:-115px -155px}
+.box__return-coupon .box__total-price .list__price .list-item--total:before{content:'';position:absolute;top:50%;left:-4px;margin-top:-8px;width:16px;height:16px;background-position:-97px -155px}
+.box__return-coupon .box__total-price .button__application{display:block;width:100%;height:48px;margin-top:10px;background-color:#00c400;border-radius:8px;font-size:15px;color:#fff;line-height:48px}
+</style>
+</head>
+<body>
+<div id="wrapper" class="wrapper">
+	<button type="button" class="button__coupon" onclick="SlideLayerJs.open('#box__layer--coupon',this)">쿠폰적용</button>
+	<div class="box__layer box__layer--full box__layer--iframe box__layer--coupon" id="box__layer--coupon" role="dialog">
+		<div class="box__layer-content">
+			<div class="box__layer-header">
+				<h2 class="text__header">쿠폰적용</h2>
+				<button type="button" class="sprite__mypage--before button__close" onclick="SlideLayerJs.close('#box__layer--coupon')"><span class="for-a11y">쿠폰적용 레이어 닫기</span></button>
+			</div>
+			<div class="box__layer-body">
+				<div class="box__return-coupon">
+	
+					<p class="text__coupon-number">보유쿠폰 <span class="text__holding-number">8</span>장 / 사용가능 <span class="text__useing-number">2</span>장</p>
+	
+					<h3 class="text__coupon-title">반품비할인</h3>
+					<ul class="list__coupon">
+						<li class="list-item">
+							<span class="frm_wrap js_radio">
+								<input type="radio" id="coupon-radio01" name="coupon-radio" class="ds_radio" />
+							</span>
+							<div class="box__coupon-information">
+								<label for="coupon-radio01" class="form__label">
+									<span class="box__price">
+										<span class="text__number">2500</span>
+										<span class="text__unit">원</span>
+									</span>
+								</label>
+								<div class="box__information">
+									<span class="coupon__name">무료반품 쿠폰</span>
+									<span class="text__coupon-terms">(10,000원 이상 구매시, ~01/31)</span>
+								</div>
+							</div>
+						</li>
+						<li class="list-item">
+							<span class="frm_wrap js_radio">
+								<input type="radio" id="coupon-radio02" name="coupon-radio" class="ds_radio" />
+							</span>
+							<div class="box__coupon-information">
+								<label for="coupon-radio02" class="form__label">
+									<span class="box__price">
+										<span class="text__number">2500</span>
+										<span class="text__unit">원</span>
+									</span>
+								</label>
+								<div class="box__information">
+									<span class="coupon__name">무료반품 쿠폰</span>
+									<span class="text__coupon-terms">(10,000원 이상 구매시, ~01/31)</span>
+									<button type="button" class="button__cancel">취소</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="box__total-price">
+						<ul class="list__price">
+							<li class="list-item list-item--delivery">
+								<span class="text__title">교환배송비</span> <span class="text__number">5,000</span>
+							</li>
+							<li class="sprite__mypage--before list-item list-item--discount">
+								<span class="text__title">할인금액</span> <span class="text__number">2,500</span>
+							</li>
+							<li class="sprite__mypage--before list-item list-item--total">
+								<span class="text__title">총 결제금액</span> <span class="text__number">2,500</span>
+							</li>
+						</ul>
+						<button type="button" class="button__application">쿠폰적용</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+var SlideLayerJs = (function () {
+
+var method = {};
+
+method.LayerOpen = function (layer, openbutton) {
+	var layerEl = document.querySelector(layer);
+	var content = document.querySelector("#wrapper");
+	this.openbutton = openbutton;
+	
+	layerEl.style.display = "block";
+	layerEl.setAttribute('tabindex','0');
+	layerEl.focus();
+	layerEl.style.bottom = "0";
+
+	this.dimmedEl = document.createElement("div");
+	this.dimmedEl.classList.add('dimmed')
+	this.dimmedEl.setAttribute('onclick','SlideLayerJs.close(\'' + layer + '\')');
+	content.insertBefore(this.dimmedEl,layerEl)
+
+	var maxHeight = window.innerHeight - 49 - 48
+	
+	if( layerEl.classList.contains("box__layer--iframe")){
+		var layerBody = layerEl.querySelector(".box__layer-body");
+		layerBody.style.height = maxHeight + "px";
+	}else{
+		layerBody.style.maxHeight = maxHeight + "px";
+	}
+	method.scrollFixed();
+};
+
+method.LayerClose = function (layer) {
+	var layerEl = document.querySelector(layer);
+	this.openbutton.focus();
+	layerEl.style.display = "none";
+	this.dimmedEl.remove();
+	
+	if( layerEl.classList.contains("box__layer--full")){
+		layerEl.style.bottom = "-100%";
+	}
+	method.scrollFixedCancel()
+};
+
+method.scrollFixed = function () {
+	this.scrollValue = window.scrollY || document.documentElement.scrollTop;
+	this.bodyEl = document.querySelector("body");
+	this.bodyEl.classList.add('body__scroll-lock')
+	this.bodyEl.style.top = '-' + this.scrollValue + 'px';
+};
+
+method.scrollFixedCancel = function () {
+	this.bodyEl.classList.remove('body__scroll-lock');
+	window.scrollTo(0 , this.scrollValue)
+};
+return {
+	open: method.LayerOpen,
+	close: method.LayerClose
+}
+})();
+</script>
+</body>
+</html>
